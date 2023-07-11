@@ -35,18 +35,22 @@ const Breadcrumb = ({ name }) => (
 );
 
 function TableSection() {
+  const [rowSelected, setRowSelected] = React.useState(null);
   const [showModal, setShowModal] = React.useState(false);
   const dialogRef = React.useRef();
 
-  const openModal = () => {
+  const openModal = (id) => {
     if (!dialogRef?.current?.open) {
       dialogRef?.current?.showModal();
       setShowModal(true);
+      setRowSelected(id);
     }
   };
 
   const closeModal = () => {
     setShowModal(false);
+    setRowSelected(null);
+
     const closingAnimationTimeout = setTimeout(() => {
       if (dialogRef?.current) {
         dialogRef?.current?.close();
@@ -58,128 +62,131 @@ function TableSection() {
   };
 
   return (
-    <React.Fragment>
-      <section id="table_section" className={TableSectionStyles.table_section}>
-        <div className={TableSectionStyles.breadcrumbs_container}>
-          <span className={TableSectionStyles.icon_container}>
-            <Image width={20} alt="Home" title="Home" src={HomeIcon} />
-          </span>
-          <ul>
-            <li>
-              <Breadcrumb name="CLIENT" />
-            </li>
-            <li>
-              <Breadcrumb name="MATTER" />
-            </li>
-            <li>
-              <Breadcrumb name="MUAMELE DETAY SAYFASI" />
-            </li>
-            <li>
-              <Breadcrumb name="MUAMELE MÜNDERECATI" />
-            </li>
-          </ul>
-        </div>
-        <div id="table_layout" className={TableSectionStyles.table_layout}>
-          <div className={TableSectionStyles.filter_controls}>
-            <div className={TableSectionStyles.search_container}>
-              <button className={TableSectionStyles.folder_drop_down_container}>
-                <div className={TableSectionStyles.icon_container}>
-                  <Image
-                    height={12}
-                    src={Folder}
-                    alt="Folder Filter"
-                    title="Folder Filter"
-                  />
-                </div>
-                <p>All (selected folder)</p>
-                <Image with={12} src={CheveronDown} alt="" />
-              </button>
-              <form className={TableSectionStyles.search_form}>
-                <div className={TableSectionStyles.icon_container}>
-                  <Image height={14} src={Search} alt="Search" title="Search" />
-                </div>
-                <input
-                  type="text"
-                  name=""
-                  id=""
-                  placeholder="Search within all folders and content, or a specific folder’s content"
+    <section
+      id="table_section"
+      className={TableSectionStyles.table_section}
+      data-modal-active={showModal}
+    >
+      <div className={TableSectionStyles.breadcrumbs_container}>
+        <span className={TableSectionStyles.icon_container}>
+          <Image width={20} alt="Home" title="Home" src={HomeIcon} />
+        </span>
+        <ul>
+          <li>
+            <Breadcrumb name="CLIENT" />
+          </li>
+          <li>
+            <Breadcrumb name="MATTER" />
+          </li>
+          <li>
+            <Breadcrumb name="MUAMELE DETAY SAYFASI" />
+          </li>
+          <li>
+            <Breadcrumb name="MUAMELE MÜNDERECATI" />
+          </li>
+        </ul>
+      </div>
+      <div id="table_layout" className={TableSectionStyles.table_layout}>
+        <div className={TableSectionStyles.filter_controls}>
+          <div className={TableSectionStyles.search_container}>
+            <button className={TableSectionStyles.folder_drop_down_container}>
+              <div className={TableSectionStyles.icon_container}>
+                <Image
+                  height={12}
+                  src={Folder}
+                  alt="Folder Filter"
+                  title="Folder Filter"
                 />
-                <div className={TableSectionStyles.icon_container}>
-                  <Image
-                    height={14}
-                    src={Mic}
-                    alt="Search with audio"
-                    title="Search with audio"
-                  />
-                </div>
-              </form>
-            </div>
-            <div className={TableSectionStyles.phases_drop_down}>
-              <p>All Status</p>
+              </div>
+              <p>All (selected folder)</p>
               <Image with={12} src={CheveronDown} alt="" />
-            </div>
-            <button className={TableSectionStyles.icon_container}>
-              <Image src={Download} alt="Export" title="Export" />
             </button>
-            <button className={TableSectionStyles.icon_container}>
-              <Image src={Filter} alt="Filter" title="Filter" />
-            </button>
+            <form className={TableSectionStyles.search_form}>
+              <div className={TableSectionStyles.icon_container}>
+                <Image height={14} src={Search} alt="Search" title="Search" />
+              </div>
+              <input
+                type="text"
+                name=""
+                id=""
+                placeholder="Search within all folders and content, or a specific folder’s content"
+              />
+              <div className={TableSectionStyles.icon_container}>
+                <Image
+                  height={14}
+                  src={Mic}
+                  alt="Search with audio"
+                  title="Search with audio"
+                />
+              </div>
+            </form>
           </div>
-          <div
-            id="table_container"
-            className={TableSectionStyles.table_container}
-          >
-            <table>
-              <thead>
-                <tr>
-                  <th>
-                    <span>#</span>
-                    <button>
-                      Phase
-                      <Image alt="" src={CaretDown} width={18} height={18} />
-                    </button>
-                  </th>
-                  <th>
-                    <button>
-                      Status
-                      <Image alt="" src={CaretDown} width={18} height={18} />
-                    </button>
-                  </th>
-                  <th>
-                    <button>
-                      Document
-                      <Image alt="" src={CaretDown} width={18} height={18} />
-                    </button>
-                  </th>
-                  <th>
-                    <button>
-                      Responsible Party
-                      <Image alt="" src={CaretDown} width={18} height={18} />
-                    </button>
-                  </th>
-                  <th />
-                  <th>
-                    <button>
-                      Update Date
-                      <Image alt="" src={CaretDown} width={18} height={18} />
-                    </button>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {transactions_array.map((_transaction, index) => (
-                  <TransactionTableRowItem
-                    item={_transaction}
-                    key={_transaction?._id ?? index}
-                    openModal={openModal}
-                  />
-                ))}
-              </tbody>
-            </table>
+          <div className={TableSectionStyles.phases_drop_down}>
+            <p>All Status</p>
+            <Image with={12} src={CheveronDown} alt="" />
           </div>
-          <QuickMenu />
+          <button className={TableSectionStyles.icon_container}>
+            <Image src={Download} alt="Export" title="Export" />
+          </button>
+          <button className={TableSectionStyles.icon_container}>
+            <Image src={Filter} alt="Filter" title="Filter" />
+          </button>
         </div>
-      </section>
+        <div
+          id="table_container"
+          className={TableSectionStyles.table_container}
+        >
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  <span>#</span>
+                  <button>
+                    Phase
+                    <Image alt="" src={CaretDown} width={18} height={18} />
+                  </button>
+                </th>
+                <th>
+                  <button>
+                    Status
+                    <Image alt="" src={CaretDown} width={18} height={18} />
+                  </button>
+                </th>
+                <th>
+                  <button>
+                    Document
+                    <Image alt="" src={CaretDown} width={18} height={18} />
+                  </button>
+                </th>
+                <th>
+                  <button>
+                    Responsible Party
+                    <Image alt="" src={CaretDown} width={18} height={18} />
+                  </button>
+                </th>
+                <th />
+                <th>
+                  <button>
+                    Update Date
+                    <Image alt="" src={CaretDown} width={18} height={18} />
+                  </button>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {transactions_array.map((_transaction, index) => (
+                <TransactionTableRowItem
+                  rowSelected={rowSelected}
+                  item={_transaction}
+                  key={_transaction?._id ?? index}
+                  openModal={openModal}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <QuickMenu />
+      </div>
       {ReactDOM.createPortal(
         <TransactionDetailsDialog
           dialogRef={dialogRef}
@@ -188,7 +195,7 @@ function TableSection() {
         />,
         document.body
       )}
-    </React.Fragment>
+    </section>
   );
 }
 
@@ -196,7 +203,11 @@ const TransactionDetailsDialog = ({ dialogRef, active, onClose }) => {
   const [tabSelected, setTabSelected] = React.useState("detail");
 
   return (
-    <dialog ref={dialogRef} className={active ? "active" : ""}>
+    <dialog
+      id="portal-dialog"
+      ref={dialogRef}
+      className={active ? "active" : ""}
+    >
       <div className="modal_container">
         <header className="header">
           <div className="document_icon">
@@ -363,7 +374,7 @@ const TransactionTableRowItem = ({ item, ...props }) => {
 
   return (
     <React.Fragment>
-      <tr>
+      <tr data-active={props.rowSelected == item?._id}>
         <td
           data-cell="id"
           data-marker={item?.marker ? "true" : "false"}
@@ -408,7 +419,7 @@ const TransactionTableRowItem = ({ item, ...props }) => {
           </div>
           <div
             className={TableSectionStyles.col}
-            onClick={() => props.openModal()}
+            onClick={() => props.openModal(item?._id)}
           >
             <h3>{item?.phase}</h3>
             <p>{item?.subphase}</p>

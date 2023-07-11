@@ -13,6 +13,20 @@
   // design
   background-color: #f2f6fa;
 
+  &:hover tbody tr {
+    opacity: 0.25;
+  }
+
+  &[data-modal-active="true"] tr {
+    &[data-active="false"] {
+      opacity: 0.25;
+    }
+
+    &[data-active="true"] {
+      opacity: 1;
+    }
+  }
+
   .breadcrumbs_container {
     // dimensions
     width: 100%;
@@ -325,6 +339,12 @@
       border-spacing: 0 1rem;
 
       tr {
+        &[data-active="true"],
+        &:hover {
+          // design
+          opacity: 1;
+        }
+
         th,
         td {
           // reset
@@ -554,14 +574,8 @@
 
         tr {
           // design
-          // opacity: 0.5;
           transition: opacity 0.5s;
           border-top: 10px solid transparent;
-
-          &:hover {
-            // design
-            opacity: 1;
-          }
         }
 
         td {
