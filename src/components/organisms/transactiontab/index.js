@@ -1,20 +1,24 @@
 "use client";
 
 import React from "react";
+import dynamic from "next/dynamic";
 
 // S T Y L E S
 import TransactionTabStyles from "./styles.module.scss";
 
 // C O M P O N E N T S
 import DocumentListingAside from "../documentlistingaside";
-import TableSection from "../tablesection";
+
+const TableSectionWithNoSSR = dynamic(() => import("../tablesection"), {
+  ssr: false,
+});
 
 function TransactionTab() {
   return (
     <React.Fragment>
       <section className={TransactionTabStyles.transaction_tab}>
         <DocumentListingAside />
-        <TableSection />
+        <TableSectionWithNoSSR />
       </section>
     </React.Fragment>
   );
