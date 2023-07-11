@@ -11,8 +11,16 @@ export default function Home() {
       "background: #0d0d0d; color: #fff; padding: 10px 15px; border-radius:5px; font-family:'Montserrat', sans-serif;"
     );
     console.log(
-      `%cLinkedIn https://www.linkedin.com/in/harshvardhanthosar/`,
+      `%cLinkedIn: https://www.linkedin.com/in/harshvardhanthosar/`,
       "background: #0e76a8; color: #fff; padding: 10px 15px; border-radius:5px; font-family:'Montserrat', sans-serif;"
+    );
+    console.log(
+      `%cGitHub Repo: https://github.com/HarshvardhanThosar/nsm-dashboard`,
+      "background: #333333; color: #fff; padding: 10px 15px; border-radius:5px; font-family:'Montserrat', sans-serif;"
+    );
+    console.log(
+      `%cLive Link: https://github.com/HarshvardhanThosar/nsm-dashboard`,
+      "background: #333333; color: #fff; padding: 10px 15px; border-radius:5px; font-family:'Montserrat', sans-serif;"
     );
   }, []);
   return (
