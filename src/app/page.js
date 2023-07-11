@@ -18,6 +18,10 @@ export default function Home() {
       `%cGitHub Repo: https://github.com/HarshvardhanThosar/nsm-dashboard`,
       "background: #333333; color: #fff; padding: 10px 15px; border-radius:5px; font-family:'Montserrat', sans-serif;"
     );
+    console.log(
+      `%cLive Link:  https://nsm-dashboard-4p4k.vercel.app/`,
+      "background: #333333; color: #fff; padding: 10px 15px; border-radius:5px; font-family:'Montserrat', sans-serif;"
+    );
   }, []);
   return (
     <main>
