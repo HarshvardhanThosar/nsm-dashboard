@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import Image from "next/image";
 
@@ -34,19 +34,24 @@ const Breadcrumb = ({ name }) => (
 );
 
 function TableSection() {
+  const [showModal, setShowModal] = React.useState(false);
   const dialogRef = React.useRef();
 
   const openModal = () => {
     if (!dialogRef?.current?.open) {
       dialogRef?.current?.showModal();
-    } else {
+      setShowModal(true);
     }
   };
 
   const closeModal = () => {
-    if (dialogRef?.current) {
-      dialogRef?.current?.close();
-    }
+    setShowModal(false);
+    const closingAnimationTimeout = setTimeout(() => {
+      if (dialogRef?.current) {
+        dialogRef?.current?.close();
+      }
+    }, 500);
+    return clearTimeout(closingAnimationTimeout);
   };
 
   return (
@@ -173,28 +178,22 @@ function TableSection() {
         </div>
       </section>
       {ReactDOM.createPortal(
-        <TransactionDetailsDialog dialogRef={dialogRef} onClose={closeModal} />,
+        <TransactionDetailsDialog
+          dialogRef={dialogRef}
+          active={showModal}
+          onClose={closeModal}
+        />,
         document.body
       )}
     </React.Fragment>
   );
 }
 
-const ModalPortal = ({ dialogRef, onClose }) => {
-  return (
-    <React.Suspense>
-      {typeof window === "undefined" ? null : (
-        <TransactionDetailsDialog dialogRef={dialogRef} onClose={onClose} />
-      )}
-    </React.Suspense>
-  );
-};
-
-const TransactionDetailsDialog = ({ dialogRef, onClose }) => {
+const TransactionDetailsDialog = ({ dialogRef, active, onClose }) => {
   const [tabSelected, setTabSelected] = React.useState("detail");
 
   return (
-    <dialog ref={dialogRef}>
+    <dialog ref={dialogRef} className={active ? "active" : ""}>
       <div className="modal_container">
         <header className="header">
           <div className="document_icon">
@@ -801,7 +800,7 @@ const QuickMenu = () => {
   return (
     <div className={TableSectionStyles.quick_menu}>
       <ul className={TableSectionStyles.menu_list}>
-        {quick_menu_array.map((_menu, index) => (
+        {quick_menu_array.map((_menu) => (
           <li
             key={_menu?.id}
             className={TableSectionStyles.menu_list_item}

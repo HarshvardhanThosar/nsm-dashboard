@@ -125,6 +125,7 @@ dialog {
   height: 100%;
   max-height: 100vh;
   min-width: min(50vw, 500px);
+  right: -100%;
   // display
   display: flex;
   flex-direction: column;
@@ -134,11 +135,16 @@ dialog {
   outline: 0;
   box-shadow: 0rem 0px 1.5rem 0.5rem #c6d4e6a0;
   background-color: #ffffff;
+  transition: right 0.5s;
 
   &::backdrop {
     // dimensions
     // design
     background-color: #ffffff00;
+  }
+
+  &.active {
+    right: 0px;
   }
 
   .modal_container {
