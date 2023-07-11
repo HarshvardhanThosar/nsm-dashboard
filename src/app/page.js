@@ -15,7 +15,7 @@ export default function Home() {
       "background: #0e76a8; color: #fff; padding: 10px 15px; border-radius:5px; font-family:'Montserrat', sans-serif;"
     );
     console.log(
-      `%cGitHub Repo: https://github.com/HarshvardhanThosar/nsm-dashboard`,
+      `%cSource Code: https://github.com/HarshvardhanThosar/nsm-dashboard`,
       "background: #333333; color: #fff; padding: 10px 15px; border-radius:5px; font-family:'Montserrat', sans-serif;"
     );
     console.log(

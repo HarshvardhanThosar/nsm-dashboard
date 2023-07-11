@@ -26,8 +26,9 @@
 
   .avatar_container {
     padding: 0.5rem;
+    position: relative;
 
-    & .icon_container {
+    .icon_container {
       // dimensions
       width: var(--tab-item-icon-width);
       aspect-ratio: 1;
@@ -38,6 +39,47 @@
       // design
       border: 2px solid #1f94ff;
       border-radius: var(--tab-item-icon-width);
+    }
+
+    .modal_container {
+      // dimensions
+      width: fit-content;
+      // display
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      // positions
+      position: absolute;
+      left: 100%;
+      bottom: 0;
+      // design
+      border: 0;
+      padding: 1rem;
+      border-radius: 0.25rem;
+      box-shadow: 5px 0px 6px #55555515;
+
+      h2 {
+        // font
+        white-space: nowrap;
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+      h3 {
+        // font
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+
+      ul {
+        // design
+        padding-top: 0.5rem;
+      }
+
+      li {
+        // font
+        font-size: 0.85rem;
+        padding: 0.1rem 0;
+      }
     }
   }
 }

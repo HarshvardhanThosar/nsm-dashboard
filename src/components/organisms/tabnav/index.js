@@ -19,6 +19,7 @@ import Avatar from "@/assets/icons/avatar.svg";
 
 // C O M P O N E N T S
 import TabNavigationItem from "@/components/molecular/tabnavitem";
+import Link from "next/link";
 
 const navitems_array = [
   {
@@ -60,6 +61,9 @@ const navitems_array = [
 
 function TabNavigation() {
   const [selectedTabIndex, setSelectedTabIndex] = React.useState(1);
+  const [showModal, setShowModal] = React.useState(false);
+
+  const toggleModal = () => setShowModal((current) => !current);
 
   const onTabOnClick = (item, index) => {
     setSelectedTabIndex(index);
@@ -84,8 +88,42 @@ function TabNavigation() {
       </ul>
       <div className={TabNavigationStyles.avatar_container}>
         <div className={TabNavigationStyles.icon_container}>
-          <Image alt="User" src={Avatar} title="Home" />
+          <Image alt="User" src={Avatar} title="Home" onClick={toggleModal} />
         </div>
+        {showModal ? (
+          <dialog open={true} className={TabNavigationStyles.modal_container}>
+            <h2>Developed by Harshvardhan Thosar</h2>
+            <div>
+              <h3>Links</h3>
+              <ul>
+                <li>
+                  <Link
+                    target="_blank"
+                    href="https://www.linkedin.com/in/harshvardhanthosar/"
+                  >
+                    - LinkedIn
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    target="_blank"
+                    href="https://github.com/HarshvardhanThosar/nsm-dashboard"
+                  >
+                    - Source Code
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    target="_blank"
+                    href="https://nsm-dashboard-4p4k.vercel.app/"
+                  >
+                    - Live Link
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </dialog>
+        ) : null}
       </div>
     </nav>
   );
