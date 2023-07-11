@@ -1,0 +1,199 @@
+.document_listing_aside {
+  --indent: 1.5rem;
+  --border-color: #cfd2d8;
+  --seperator-width: 0.1rem;
+  --subtree-width: 0.15rem;
+  --line-seperator: var(--seperator-width) solid var(--border-color);
+  --tree-line: var(--subtree-width) dotted var(--border-color);
+
+  height: 100vh;
+  min-width: 350px;
+  max-width: 600px;
+  overflow-x: auto;
+  resize: horizontal;
+  // display
+  display: flex;
+  flex-direction: column;
+  // positions
+  position: relative;
+  isolation: isolate;
+  z-index: 4;
+  // design
+  background-color: #ffffff;
+  box-shadow: 5px 0px 6px #55555515;
+
+  .meta_container_col {
+    // dimensions
+    width: 100%;
+    // display
+    display: flex;
+    flex-direction: column;
+
+    .user_controls_row {
+      // display
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      // design
+      padding: 1rem;
+      background: #f8fafd;
+
+      h2 {
+        // font
+        font-size: 1.15rem;
+        font-weight: bold;
+      }
+
+      .icon_button {
+        // dimensions
+        width: 2.25rem;
+        height: 2.25rem;
+        // display
+        display: grid;
+        place-items: center;
+        // design
+        border-radius: 0.4rem;
+        background-color: #ffffff;
+      }
+    }
+
+    .document_controls_row {
+      // display
+      display: grid;
+      grid-template-columns: repeat(3, 1fr) auto;
+      align-items: stretch;
+
+      .count_preview_col {
+        // display
+        display: flex;
+        flex-direction: column;
+        // design
+        padding: 0 1.5rem 0 1rem;
+        border-right: var(--line-seperator);
+        margin: 0.5rem 0;
+
+        h2 {
+          // font
+          font-size: 1.2rem;
+          font-weight: bold;
+        }
+
+        span {
+          // font
+          font-size: 0.65rem;
+          color: #7e8b9f;
+          opacity: 0.75;
+        }
+      }
+
+      .icon_button {
+        // dimensions
+        min-height: 100%;
+        aspect-ratio: 1;
+        // display
+        display: grid;
+        place-items: center;
+      }
+    }
+  }
+
+  .list_container_col {
+    flex: 1;
+    max-height: auto;
+    overflow-x: hidden;
+    // display
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    // design
+    scrollbar-gutter: initial;
+
+    .filter_controls_form_row {
+      // display
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: stretch;
+      // design
+      border-top: var(--line-seperator);
+      border-bottom: var(--line-seperator);
+
+      .icon_button {
+        // dimensions
+        min-height: 100%;
+        aspect-ratio: 1;
+        // display
+        display: grid;
+        place-items: center;
+      }
+    }
+
+    .filter_controls_search {
+      // dimensions
+      width: 100%;
+      // design
+      padding: 1.2rem 1rem;
+      border: 0;
+      // font
+      font-size: 0.8rem;
+      color: #4f5357;
+    }
+  }
+
+  .document_list_container {
+    flex: 1;
+    // dimensions
+    overflow: scroll;
+    // display
+    display: flex;
+    flex-direction: column;
+
+    // Adding a comment for future reference
+    // to customize the scroll bar
+    // Refer - https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp
+    /* width */
+    &::-webkit-scrollbar {
+      // dimensions
+      width: 1rem;
+      // design
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      // design
+      background-color: #ffffff;
+      border-left: var(--line-seperator);
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: #d2d9e0;
+      border: 4px solid #ffffff;
+      border-radius: 1rem;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555555;
+    }
+  }
+}
+
+.document_list {
+  flex: 1;
+  // dimensions
+  width: inherit;
+  max-width: 100%;
+  // positions
+  position: relative;
+  // design
+  padding-left: 0.5rem;
+
+  & > li {
+    // positions
+    position: relative;
+    border: 0;
+    border-bottom: 1px solid #cfd2d860;
+  }
+}

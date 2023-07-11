@@ -1,0 +1,17 @@
+{
+  "1": {
+    "id": 1,
+    "name": "Devam Etmekte",
+    "bg-color": "#FFC80B"
+  },
+  "2": {
+    "id": 2,
+    "name": "Tamamlandı",
+    "bg-color": "#00BD8B"
+  },
+  "3": {
+    "id": 3,
+    "name": "Başlanmadı",
+    "bg-color": "#F72142"
+  }
+}

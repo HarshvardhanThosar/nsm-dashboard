@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="23.208" viewBox="0 0 80 23.208">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.28" y1="0.111" x2="0.705" y2="1.11" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#55b7ff"/>
+      <stop offset="1" stop-color="#0c1ac1"/>
+    </linearGradient>
+  </defs>
+  <path id="Union_2018" data-name="Union 2018" d="M73.751,23.21a1,1,0,0,1-1-1V1.005a1,1,0,0,1,1-1H79a1,1,0,0,1,1,1v21.2a1,1,0,0,1-1,1Zm-9.909,0a1,1,0,0,1-1-1V8.74a1,1,0,0,1,1-1h5.251a1,1,0,0,1,1,1V22.21a1,1,0,0,1-1,1Zm-9.909,0a1,1,0,0,1-1-1V1.005a1,1,0,0,1,1-1h5.251a1,1,0,0,1,1,1v21.2a1,1,0,0,1-1,1Zm-33.353,0a1,1,0,0,1-1-1V1.005a1,1,0,0,1,1-1h5.251a1,1,0,0,1,1,1v21.2a1,1,0,0,1-1,1ZM1,23.21a1,1,0,0,1-1-1V1.005a1,1,0,0,1,1-1H6.252a1,1,0,0,1,1,1v21.2a1,1,0,0,1-1,1Zm40.091,0V8.708h.725a7.25,7.25,0,1,1,0,14.5ZM16.68,20.947l-7.493-7.5,0-10.931,7.492,7.49V20.949ZM37.469,14.5a7.251,7.251,0,1,1,0-14.5h.725V14.5Z" transform="translate(-0.002 -0.002)" fill="url(#linear-gradient)"/>
+</svg>

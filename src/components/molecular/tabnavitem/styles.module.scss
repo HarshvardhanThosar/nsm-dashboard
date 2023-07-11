@@ -1,0 +1,72 @@
+.tab_nav_item {
+  --tab-item-icon-size: 2.25rem;
+  --active-selection-left-border-color: #0000; // transparent, changes when new class is added
+  --active-selection-background-color: #0000;
+
+  // dimensions
+  width: 100%;
+  // display
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  // design
+  border-color: #0000;
+  border-left-color: var(--active-selection-left-border-color);
+  border-width: 0 0.25rem;
+  border-style: solid;
+  background-color: var(--active-selection-background-color);
+  padding: 0.75rem 0.5rem;
+
+  &[data-active="true"] {
+    --active-selection-left-border-color: #1f94ff;
+    --active-selection-background-color: #1f94ff0d;
+  }
+
+  * {
+    // font
+    text-align: center;
+    font-size: 0.7rem;
+    color: inherit;
+  }
+
+  & .icon_container {
+    // dimensions
+    width: var(--tab-item-icon-size);
+    // display
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // design
+    border-radius: 0.25rem;
+
+    img {
+      // dimensions
+      height: 80%;
+      // design
+      filter: invert(100);
+    }
+  }
+
+  & .label_container {
+    // font
+    color: #ffffff;
+  }
+
+  &:is(#logo) {
+    // reset
+    border: 0;
+    gap: 0.4rem;
+    padding: 0rem;
+
+    .icon_container {
+      --tab-item-icon-size: 4rem;
+    }
+
+    img {
+      // reset
+      filter: none;
+    }
+  }
+}

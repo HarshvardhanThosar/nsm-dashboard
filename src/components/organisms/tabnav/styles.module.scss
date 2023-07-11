@@ -1,0 +1,43 @@
+.tab_nav {
+  --tab-item-icon-width: 2.75rem;
+
+  // dimensions
+  height: 100vh;
+  min-width: 2rem;
+  // positions
+  position: relative;
+  isolation: isolate;
+  z-index: 5;
+  // display
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  // design
+  background-color: #002874;
+  padding: 0.75rem 0;
+  box-shadow: 5px 0px 6px #55555545;
+
+  .nav_list {
+    flex: 1;
+    // dimensions
+    width: 100%;
+  }
+
+  .avatar_container {
+    padding: 0.5rem;
+
+    & .icon_container {
+      // dimensions
+      width: var(--tab-item-icon-width);
+      aspect-ratio: 1;
+      // display
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      // design
+      border: 2px solid #1f94ff;
+      border-radius: var(--tab-item-icon-width);
+    }
+  }
+}
