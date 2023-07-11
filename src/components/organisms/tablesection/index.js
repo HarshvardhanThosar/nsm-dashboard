@@ -52,7 +52,9 @@ function TableSection() {
         dialogRef?.current?.close();
       }
     }, 500);
-    return clearTimeout(closingAnimationTimeout);
+    return () => {
+      clearTimeout(closingAnimationTimeout);
+    };
   };
 
   return (
