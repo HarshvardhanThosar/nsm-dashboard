@@ -370,11 +370,17 @@ const TransactionDetailsDialog = ({ dialogRef, active, onClose }) => {
 const TransactionTableRowItem = ({ item, ...props }) => {
   const [showSubtree, setShowSubtree] = React.useState(false);
 
-  const toggleSubtreeVisibility = () => setShowSubtree((current) => !current);
+  const toggleSubtreeVisibility = (e) => {
+    e.stopPropagation();
+    setShowSubtree((current) => !current);
+  };
 
   return (
     <React.Fragment>
-      <tr data-active={props.rowSelected == item?._id}>
+      <tr
+        data-active={props.rowSelected == item?._id}
+        onClick={() => props.openModal(item?._id)}
+      >
         <td
           data-cell="id"
           data-marker={item?.marker ? "true" : "false"}
@@ -417,10 +423,7 @@ const TransactionTableRowItem = ({ item, ...props }) => {
             </button>
             <span>{item?._id}</span>
           </div>
-          <div
-            className={TableSectionStyles.col}
-            onClick={() => props.openModal(item?._id)}
-          >
+          <div className={TableSectionStyles.col}>
             <h3>{item?.phase}</h3>
             <p>{item?.subphase}</p>
           </div>
