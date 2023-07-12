@@ -378,7 +378,7 @@ const TransactionTableRowItem = ({ item, ...props }) => {
   return (
     <React.Fragment>
       <tr
-        bgColor="#ffffff"
+        className={TableSectionStyles.table_row}
         data-active={props.rowSelected == item?._id}
         onClick={() => props.openModal(item?._id)}
       >

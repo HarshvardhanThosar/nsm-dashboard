@@ -420,7 +420,6 @@
         tr {
           // design
           transition: opacity 0.5s;
-          border-top: 10px solid transparent;
         }
 
         td {
@@ -437,10 +436,10 @@
           }
 
           &[data-cell="id"] {
-            --max-width: 400px;
             // dimensions
-            width: fit-content;
-            max-width: var(--max-width);
+            min-width: 100%;
+            // width: 100%;
+            // max-width: var(--max-width);
             // positions
             position: relative;
             // display
@@ -481,6 +480,7 @@
 
             .col {
               // dimensions
+              flex: 1;
               overflow: hidden;
               // font
               text-align: left;
