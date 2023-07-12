@@ -384,6 +384,7 @@
           &[data-cell="update"] {
             button {
               // design
+              width: max-content;
               margin-inline: auto;
             }
           }
