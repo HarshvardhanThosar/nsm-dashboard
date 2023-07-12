@@ -136,36 +136,36 @@ function TableSection() {
           id="table_container"
           className={TableSectionStyles.table_container}
         >
-          <table>
+          <table width="100%">
             <thead>
               <tr>
-                <th>
+                <th data-cell="id">
                   <span>#</span>
                   <button>
                     Phase
                     <Image alt="" src={CaretDown} width={18} height={18} />
                   </button>
                 </th>
-                <th>
+                <th data-cell="status">
                   <button>
                     Status
                     <Image alt="" src={CaretDown} width={18} height={18} />
                   </button>
                 </th>
-                <th>
+                <th data-cell="document">
                   <button>
                     Document
                     <Image alt="" src={CaretDown} width={18} height={18} />
                   </button>
                 </th>
-                <th>
+                <th data-cell="responsible">
                   <button>
                     Responsible Party
                     <Image alt="" src={CaretDown} width={18} height={18} />
                   </button>
                 </th>
-                <th />
-                <th>
+                <th data-cell="comments" />
+                <th data-cell="update">
                   <button>
                     Update Date
                     <Image alt="" src={CaretDown} width={18} height={18} />
@@ -378,6 +378,7 @@ const TransactionTableRowItem = ({ item, ...props }) => {
   return (
     <React.Fragment>
       <tr
+        bgColor="#ffffff"
         data-active={props.rowSelected == item?._id}
         onClick={() => props.openModal(item?._id)}
       >
