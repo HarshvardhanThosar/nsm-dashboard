@@ -136,7 +136,7 @@ function TableSection() {
           id="table_container"
           className={TableSectionStyles.table_container}
         >
-          <table width="100%">
+          <table>
             <thead>
               <tr>
                 <th data-cell="id">

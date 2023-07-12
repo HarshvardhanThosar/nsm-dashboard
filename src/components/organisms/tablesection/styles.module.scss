@@ -436,9 +436,10 @@
           }
 
           &[data-cell="id"] {
+            --max-width: 400px;
             // dimensions
-            min-width: 100%;
-            // width: 100%;
+            min-width: var(--max-width);
+            width: 100%;
             // max-width: var(--max-width);
             // positions
             position: relative;
@@ -558,12 +559,10 @@
           &[data-cell="responsible"] {
             --max-width: 300px;
             // dimensions
-            width: fit-content;
             max-width: var(--max-width);
 
             & > h3 {
               // dimensions
-              width: 100%;
               max-width: var(--max-width);
               // design
               padding: 0.1rem 0.45rem;
